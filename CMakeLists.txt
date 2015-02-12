@@ -1,0 +1,5 @@
+PROJECT(axweb)
+ADD_SUBDIRECTORY(axweb)
+ADD_EXECUTABLE(server main.c)
+LINK_DIRECTORIES(axweb)
+TARGET_LINK_LIBRARIES(server axweb_static)
