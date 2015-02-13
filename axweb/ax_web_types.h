@@ -1,4 +1,6 @@
 #include "ax_web_buffer.h"
+#include <stdlib.h>
+#include <stdint.h>
 /*
  * server context
  */
@@ -10,18 +12,24 @@ struct ax_web_ctx_t{
 	void* req_handler;		//request handler
 	void* log_handler;		//log hanbdler
 };
-
+/*
+ * client socket connection
+ */
+struct ax_web_connection{
+	int socket_fd;
+	char ipaddr[64];
+	int32_t connect_time;
+};
 /*
  * request env
  */
 struct ax_web_request_t{
-	int socket_fd;			//raw socket fd for http request
+	struct ax_web_connection connection;
 	char *query;			//http query string,need to free after used.
 	char *header;			//http header as string,need to free after used.
 	char *path;				//http request path,need to free after used.
 	char *method;			//http method,need to free after used.
 	char *version;			//http protocol version,need to free after used.
-	char remote_ip[32]; 	//client ip
 	ax_web_buffer_p out_buff;	//buffer data to send to client,need free after send out.
 	ax_web_buffer_p in_buff;	//buffer data that read from client,need to free after processed.
 };

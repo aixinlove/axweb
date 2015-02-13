@@ -9,8 +9,9 @@
 #define __ax_web___
 #include "ax_web_types.h"
 #include "ax_web_buffer.h"
-int ax_web_init(ax_web_ctx_p ctx);
+ax_web_ctx_p ax_web_new();
 int ax_web_start(ax_web_ctx_p ctx,char* addr,int port);
+int ax_web_stop(ax_web_ctx_p ctx);
 int ax_web_close(ax_web_ctx_p ctx);
 /*
  * calbacks & handlers
@@ -19,6 +20,7 @@ int ax_web_set_req_handler(ax_web_ctx_p ctx,ax_web_req_handler_t handler);
 ax_web_req_handler_t ax_web_get_req_handler(ax_web_ctx_p ctx);
 int ax_web_set_log_handler(ax_web_ctx_p ctx,ax_web_log_handler_t handler);
 ax_web_log_handler_t ax_web_get_log_handler(ax_web_ctx_p ctx);
+
 /*
  * response functions
  */
