@@ -1,4 +1,4 @@
-SET(LUA_ROOT liblua)
+SET(LUA_ROOT lua5_3)
 SET(LUA_SRC 
 		${LUA_ROOT}/src/lapi.c
 		${LUA_ROOT}/src/lauxlib.c

@@ -22,7 +22,7 @@ ax_web_ctx_p ax_web_new(){
 	ctx->socket_fd=-1;
 	ctx->req_handler=NULL;
 	ctx->log_handler=NULL;
-	ctx->event_ctx=ax_web_event_new();
+	ctx->event_ctx=ax_web_event_new(ctx);
 	return ctx;
 }
 /*
@@ -49,10 +49,11 @@ int ax_web_handle_one_event(ax_web_ctx_p ctx,ax_web_event_p e){
 			ax_web_log_i(ctx,"new client incomming");
 			//add client to event loop
 			ax_web_event_push(ctx->event_ctx,req->connection.socket_fd,ax_web_event_type_read,req);
-			ax_web_event_push(ctx->event_ctx,req->connection.socket_fd,ax_web_event_type_write,req);
+			//ax_web_event_push(ctx->event_ctx,req->connection.socket_fd,ax_web_event_type_write,req);
 		}
 	}else{//client fd
 		ax_web_log_i(ctx,"client event");	
+
 		//read event ->read data to request's inbuffer
 		//if read error then goto error
 		//write event ->write out request's outbuffer

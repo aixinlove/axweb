@@ -1,0 +1,5 @@
+SET(SRC_LIST
+		l_ax_web.c
+)
+ADD_LIBRARY(axwebl_static STATIC ${SRC_LIST})
+SET_TARGET_PROPERTIES(axwebl_static PROPERTIES OUTPUT_NAME "axwebl")

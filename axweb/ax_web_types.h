@@ -5,20 +5,6 @@
 #include <stdlib.h>
 #include <stdint.h>
 /*
- * server context
- */
-struct ax_web_ctx_t{
-	int socket_fd;			//raw server socket
-	int runing;
-	char listen_addr[32];
-	int listen_port;
-	void* req_handler;		//request handler
-	void* log_handler;		//log hanbdler
-	void* idle_handler;  	//idle callback
-	char document_path[128];
-	ax_web_event_ctx_p event_ctx;
-};
-/*
  * client socket connection
  */
 struct ax_web_connection{
@@ -36,8 +22,23 @@ struct ax_web_request_t{
 	char *path;				//http request path,need to free after used.
 	char *method;			//http method,need to free after used.
 	char *version;			//http protocol version,need to free after used.
-	ax_web_buffer_p out_buff;	//buffer data to send to client,need free after send out.
-	ax_web_buffer_p in_buff;	//buffer data that read from client,need to free after processed.
+	ax_web_buffer_p in_buff;
+	ax_web_buffer_p out_buff;
+};
+/*
+ * server context
+ */
+struct ax_web_ctx_t{
+	int socket_fd;			//raw server socket
+	int runing;
+	char listen_addr[32];
+	int listen_port;
+	void* req_handler;		//request handler
+	void* log_handler;		//log hanbdler
+	void* idle_handler;  	//idle callback
+	char document_path[128];
+	ax_web_event_ctx_p event_ctx;
+
 };
 
 enum ax_web_log_level{

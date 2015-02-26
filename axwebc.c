@@ -24,7 +24,7 @@ int main(){
 	}
 	int axret=0;
 	ax_web_ctx_p ctx=ax_web_new();
-	ctx->idle_handler=on_idle;
+	//ctx->idle_handler=on_idle;
 	ctx->log_handler=on_log;
 	ctx->req_handler=on_request;
 	if((axret=ax_web_start(ctx,"127.0.0.1",8888,"."))!=0){

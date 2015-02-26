@@ -21,7 +21,7 @@ typedef struct ax_web_event_t* ax_web_event_p;
 /*
  * public functions
  */
-ax_web_event_ctx_p ax_web_event_new();
+ax_web_event_ctx_p ax_web_event_new(void* ud);
 int ax_web_event_push(ax_web_event_ctx_p ctx,int fd,enum ax_web_event_type type,void* ud);
 int ax_web_event_pop(ax_web_event_ctx_p ctx,int fd,enum ax_web_event_type type);
 int ax_web_event_wait(ax_web_event_ctx_p ctx,ax_web_event_p event,int max_event,int timeout);
