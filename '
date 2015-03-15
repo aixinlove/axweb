@@ -1,7 +1,0 @@
-#include "axwebl/l_ax_web.h"
-
-
-int main(){
-	printf("hello world");
-	return 0;
-}
